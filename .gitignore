@@ -1,0 +1,20 @@
+# Django
+*.log
+*.sqlite3
+db.sqlite3
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+.env
+
+# AWS EB
+.elasticbeanstalk/
+.ebextensions/
+
+# IDE
+.idea/
+.vscode/
