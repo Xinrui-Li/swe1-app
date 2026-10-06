@@ -13,7 +13,6 @@ venv/
 
 # AWS EB
 .elasticbeanstalk/
-.ebextensions/
 
 # IDE
 .idea/
