@@ -19,7 +19,4 @@ script:
 
 after_success:
   - python -m coverage xml -o coverage.xml
-  - export COVERALLS_REPO_TOKEN=<你的Repo_Token>
-  - export COVERALLS_GIT_BRANCH=$TRAVIS_BRANCH
-  - export COVERALLS_GIT_COMMIT=$TRAVIS_COMMIT
-  - python -m coveralls
+  - python -m coveralls debug
