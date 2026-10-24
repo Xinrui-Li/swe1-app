@@ -20,8 +20,9 @@ script:
 after_success:
   - python -m coverage xml -o coverage.xml
   - >
+    COVERALLS_SERVICE_NAME="travis-ci"
+    COVERALLS_SERVICE_JOB_ID="$TRAVIS_JOB_ID"
+    COVERALLS_GIT_BRANCH="$TRAVIS_BRANCH"
+    COVERALLS_GIT_COMMIT="$TRAVIS_COMMIT"
+    COVERALLS_GIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE"
     python -m coveralls
-    --service-name travis-ci
-    --service-job-id "$TRAVIS_JOB_ID"
-    --service-branch "$TRAVIS_BRANCH"
-    --service-build-url "$TRAVIS_BUILD_WEB_URL"
