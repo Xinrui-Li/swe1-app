@@ -18,4 +18,4 @@ script:
 after_success:
   - python -m coverage xml -o coverage.xml
   - curl -fL https://coveralls.io/coveralls-linux-x86_64.tar.gz | tar -xz
-  - ./coveralls report coverage.xml --format=cobertura --debug
+  - ./coveralls report coverage.xml --format=cobertura --debug --service-name=travis-ci --service-job-id="$TRAVIS_JOB_ID" --service-build-url="$TRAVIS_BUILD_WEB_URL" --service-branch="$TRAVIS_BRANCH"
