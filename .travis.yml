@@ -18,12 +18,8 @@ script:
 after_success:
   - python -m coverage xml -o coverage.xml
   - |
-    export CI_NAME="travis-ci"
-    export CI_BUILD_NUMBER="$TRAVIS_BUILD_NUMBER"
-    export CI_BUILD_URL="$TRAVIS_BUILD_WEB_URL"
-    export CI_BRANCH="$TRAVIS_BRANCH"
-    export CI_COMMIT_ID="$TRAVIS_COMMIT"
-    export CI_COMMIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE"
-    export CI_COMMITTER_NAME="$(git log -1 --format='%an')"
-    export CI_COMMITTER_EMAIL="$(git log -1 --format='%ae')"
+    echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
+    echo "TRAVIS_COMMIT=$TRAVIS_COMMIT"
+    echo "TRAVIS_COMMIT_MESSAGE=$TRAVIS_COMMIT_MESSAGE"
+    git log -1 --format="commit: %H%nmessage: %s%nauthor: %an <%ae>"
     python -m coveralls
