@@ -17,5 +17,5 @@ script:
 
 after_success:
   - python -m coverage xml -o coverage.xml
-  - curl -L https://coveralls.io/coveralls-linux-x86_64.tar.gz | tar -xz
-  - ./coveralls report coverage.xml --format cobertura
+  - curl -fL https://coveralls.io/coveralls-linux-x86_64.tar.gz | tar -xz
+  - ./coveralls report coverage.xml --format=cobertura --debug
