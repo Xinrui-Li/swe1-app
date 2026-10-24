@@ -14,7 +14,7 @@ script:
   - python -m flake8 .
   - python -m coverage run manage.py test
   - python -m coverage report
+
+after_success:
   - python -m coverage xml -o coverage.xml
-  - curl -fL https://coveralls.io/coveralls-linux-x86_64.tar.gz -o coveralls.tar.gz
-  - tar -xzf coveralls.tar.gz
-  - ./coveralls report coverage.xml --format=cobertura --debug --service-name=travis-ci --service-job-id="$TRAVIS_JOB_ID" --service-build-url="$TRAVIS_BUILD_WEB_URL" --service-branch="$TRAVIS_BRANCH"
+  - python -m coveralls
