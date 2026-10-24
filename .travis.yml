@@ -19,5 +19,4 @@ script:
 
 after_success:
   - python -m coverage xml -o coverage.xml
-  - python -m coveralls
-#  - modification
+  - COVERALLS_GIT_BRANCH="$TRAVIS_BRANCH" COVERALLS_GIT_COMMIT="$TRAVIS_COMMIT" COVERALLS_GIT_MESSAGE="$(git log -1 --format=%s)" python -m coveralls
