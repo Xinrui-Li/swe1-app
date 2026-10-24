@@ -30,7 +30,7 @@ class QuestionModelTests(TestCase):
         self.assertEqual(str(choice), "Test choice")
 
     def test_was_published_recently_with_recent_question(self):
-        question = create_question("Recent question", -1/24)
+        question = create_question("Recent question", -1 / 24)
         self.assertTrue(question.was_published_recently())
 
     def test_was_published_recently_with_old_question(self):
@@ -81,17 +81,13 @@ class DetailViewTests(TestCase):
     def test_existing_question(self):
         question = create_question("Test question", -1)
 
-        response = self.client.get(
-            reverse("polls:detail", args=(question.id,))
-        )
+        response = self.client.get(reverse("polls:detail", args=(question.id,)))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["question"], question)
 
     def test_nonexistent_question_returns_404(self):
-        response = self.client.get(
-            reverse("polls:detail", args=(9999,))
-        )
+        response = self.client.get(reverse("polls:detail", args=(9999,)))
 
         self.assertEqual(response.status_code, 404)
 
@@ -100,17 +96,13 @@ class ResultsViewTests(TestCase):
     def test_existing_question(self):
         question = create_question("Test question", -1)
 
-        response = self.client.get(
-            reverse("polls:results", args=(question.id,))
-        )
+        response = self.client.get(reverse("polls:results", args=(question.id,)))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["question"], question)
 
     def test_nonexistent_question_returns_404(self):
-        response = self.client.get(
-            reverse("polls:results", args=(9999,))
-        )
+        response = self.client.get(reverse("polls:results", args=(9999,)))
 
         self.assertEqual(response.status_code, 404)
 
