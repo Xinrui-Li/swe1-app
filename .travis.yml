@@ -1,0 +1,19 @@
+language: python
+python:
+  - "3.12"
+
+install:
+  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
+
+before_script:
+  - python manage.py check
+
+script:
+  - python -m black --check .
+  - python -m flake8 .
+  - python -m coverage run manage.py test
+  - python -m coverage report
+
+after_success:
+  - coveralls
